@@ -1,0 +1,2 @@
+# reference https://github.com/pnpm/pnpm/issues/6892
+# 在根目录设置 - '!xxx' 无效 但在xxx内放置空的 pnpm-workspace.yaml 可以避免这个问题
