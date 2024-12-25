@@ -526,6 +526,8 @@ module.exports = {
      */
     // 关闭对any的警告
     '@typescript-eslint/no-explicit-any': ['off'],
+    // 关闭require写法警告
+    '@typescript-eslint/no-var-requires': 'off',
     // 定义过的变量必须使用
     '@typescript-eslint/no-unused-vars': [
       'error',

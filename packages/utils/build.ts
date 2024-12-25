@@ -27,15 +27,15 @@ async function bundle(format: FORMAT) {
     // preserve Chinese character
     charset: 'utf8',
     // external: ['vue', 'keep-design'],
-    entryPoints: ['./src/index.ts'],
+    entryPoints: ['./src/index.ts']
   };
 
-  if (process.argv.includes('-w')) {
+  if(process.argv.includes('-w')) {
     const loggerPlugin = {
       name: 'loggerPlugin',
       setup(build: any) {
         build.onEnd(finish);
-      },
+      }
     };
 
     const ctx = await context({
@@ -48,7 +48,7 @@ async function bundle(format: FORMAT) {
     await build(options);
     finish();
   }
-};
+}
 
 bundle('esm');
 bundle('cjs');

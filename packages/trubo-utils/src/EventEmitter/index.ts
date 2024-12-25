@@ -1,6 +1,6 @@
+import EventEmitterInstance from './EventEmitter';
 
-type type = string | symbol;
-
-export function EventEmitter(type: type) {
-  console.log('EventEmitter:>> ', type);
-}
+/**
+ * EventEmitter实例
+ */
+export const EventEmitter = EventEmitterInstance.getInstance();
