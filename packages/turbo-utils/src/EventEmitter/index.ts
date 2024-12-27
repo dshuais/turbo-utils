@@ -15,7 +15,7 @@ type EventCallback = (...args: Args) => void;
  *
  * 建议使用单例模式，避免多次实例化。直接导入 getInstance() 的 EventEmitter
  *
- * 如果需要多个实例，可以通过 turboutils/EventEmitter 导入 EventEmitter class 手动去new
+ * 如果需要多个实例，可以通过 turboutils 导入 EventEmitterInstance 手动去 new EventEmitterInstance
  *
  * @example
  */
@@ -61,7 +61,7 @@ class EventEmitter {
   on(eventName: string, callback: EventCallback) {
     if(!this.validArgs(eventName, callback, 'on')) return;
 
-    (this.events[eventName] ?? new Set()).add(callback);
+    (this.events[eventName] ??= new Set()).add(callback);
   }
 
   /**

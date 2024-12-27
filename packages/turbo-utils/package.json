@@ -1,0 +1,38 @@
+{
+  "name": "turboutils",
+  "version": "0.0.4-alpha",
+  "description": "A library of common tools.",
+  "main": "./lib/index.js",
+  "module": "./es/index.js",
+  "typings": "./lib/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "README.md",
+    "package.json"
+  ],
+  "scripts": {
+    "clean": "rimraf ./dist && rimraf ./lib && rimraf ./es",
+    "build:bundle": "ts-node ./index.ts",
+    "build:types": "tsc -p ./tsconfig.json",
+    "build": "pnpm clean && pnpm build:bundle && pnpm build:types",
+    "publish:utils": "npm publish --registry https://registry.npmjs.org"
+  },
+  "keywords": [
+    "utils",
+    "turbo",
+    "turbo-utils",
+    "common",
+    "hooks",
+    "tools"
+  ],
+  "author": "dshuais",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dshuais/turbo-utils.git"
+  },
+  "homepage": "https://dshuais.netlify.app/"
+}

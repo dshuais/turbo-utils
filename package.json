@@ -4,7 +4,9 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:utils": "pnpm -r --filter=./packages/turbo-utils build",
+    "publish:utils": "pnpm -r --filter=./packages/turbo-utils publish:utils"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,7 @@
     "@typescript-eslint/eslint-plugin": "7.4.0",
     "@typescript-eslint/parser": "7.4.0",
     "esbuild": "^0.24.2",
+    "esbuild-plugin-glob": "^2.2.3",
     "eslint": "8.57.0",
     "eslint-plugin-prettier": "5.2.1",
     "eslint-plugin-react": "7.35.0",
@@ -21,6 +24,10 @@
     "eslint-plugin-react-refresh": "0.4.6",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
+    "tslib": "^2.8.1",
     "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "turboutils": "0.0.2-alpha"
   }
 }

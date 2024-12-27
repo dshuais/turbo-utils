@@ -1,3 +1,4 @@
+
 /*
  * @Author: dushuai
  * @Date: 2024-01-10 18:36:07
@@ -7,47 +8,34 @@
  */
 const esbuild = require('esbuild');
 // import { build, Charset, context, PluginBuild } from 'esbuild';
+const esbuildGlob = require('esbuild-plugin-glob');
 
 type FORMAT = 'cjs' | 'esm';
 
-console.log('Building...');
+const { build } = esbuild;
+const { globPlugin } = esbuildGlob;
 
-const { build, context } = esbuild;
+console.log('\x1b[31mBuilding...\x1b[0m');
 
 async function bundle(format: FORMAT) {
-  const ext = format === 'esm' ? '.mjs' : '.js';
-  const outfile = `dist/index.${format}${ext}`;
-  const finish = () => console.log('Build finished:', outfile);
+  const outdir = format === 'esm' ? 'es' : 'lib';
+  const finish = () => console.log('\x1b[32mBuild catalogue finished:', `${outdir}!\x1b[0m`);
 
   const options = {
     format,
     bundle: true,
-    target: ['chrome53'],
-    outfile,
-    // preserve Chinese character
+    target: 'es2015',
     charset: 'utf8',
-    // external: ['vue', 'keep-design'],
-    entryPoints: ['./src/index.ts']
+    external: ['turboutils'],
+    outdir,
+    entryPoints: ['./src/**/*.ts'],
+    outbase: './src',
+    minify: true,
+    plugins: [globPlugin()]
   };
 
-  if(process.argv.includes('-w')) {
-    const loggerPlugin = {
-      name: 'loggerPlugin',
-      setup(build: any) {
-        build.onEnd(finish);
-      }
-    };
-
-    const ctx = await context({
-      ...options,
-      plugins: [loggerPlugin]
-    });
-
-    await ctx.watch();
-  } else {
-    await build(options);
-    finish();
-  }
+  await build(options);
+  finish();
 }
 
 bundle('esm');

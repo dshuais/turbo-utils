@@ -15,8 +15,8 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
       turboutils:
-        specifier: 0.0.1-alpha
-        version: 0.0.1-alpha
+        specifier: 0.0.3-alpha
+        version: 0.0.3-alpha
     devDependencies:
       '@eslint/js':
         specifier: ^9.17.0
@@ -908,8 +908,8 @@ packages:
     peerDependencies:
       typescript: '>=4.2.0'
 
-  turboutils@0.0.1-alpha:
-    resolution: {integrity: sha512-AuYP2IfdwhFocibcj8vrNTVRxoRQx9rOUQr3w//sOXqcbr0rhlZCltoaG/oA6XnULPb5ojf8dQ95dYHAjbVZ+A==}
+  turboutils@0.0.3-alpha:
+    resolution: {integrity: sha512-aO04VE0cSTaT4DYOePY4Bkuv4mFD9fdo6i0l9kKYri0dHYyZlgOzJrWGoCHw8GjbOnIblmNHTbHVpxTRNpMgSg==}
 
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -1737,7 +1737,7 @@ snapshots:
     dependencies:
       typescript: 5.6.3
 
-  turboutils@0.0.1-alpha: {}
+  turboutils@0.0.3-alpha: {}
 
   type-check@0.4.0:
     dependencies:
