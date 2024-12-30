@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { padZero } from '../shared/utils';
 
 /**
  * 格式化时间 Date 转化为指定格式的String
@@ -62,6 +63,32 @@ export function formatDate(date?: string | number | Date, fmt?: string) {
     }
   }
   return fmt;
+}
+
+/**
+ * Get time parameter
+ * @param date
+ * @returns
+ */
+export function getDateParams(date?: string | number | Date) {
+  const day = dayjs(date);
+  const weekDay = { 0: '日', 1: '一', 2: '二', 3: '三', 4: '四', 5: '五', 6: '六' };
+  const dateParams = {
+    'y': day.year() + '',
+    'm': day.month() + 1 + '',
+    'd': day.date() + '',
+    'h': day.hour() + '',
+    'mm': day.minute() + '',
+    'ss': day.second() + '',
+    'w': weekDay[day.day()]
+  };
+  type Key = keyof typeof dateParams
+  for(const key in dateParams) {
+    if(Object.hasOwnProperty.call(dateParams, key) && !['y', 'w'].includes(key)) {
+      dateParams[key as Key] = padZero(dateParams[key as Key]);
+    }
+  }
+  return dateParams;
 }
 
 export default dayjs;

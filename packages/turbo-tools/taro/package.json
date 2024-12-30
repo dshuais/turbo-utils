@@ -1,7 +1,7 @@
 {
-  "name": "turboutils",
-  "version": "0.0.6-alpha",
-  "description": "A library of common tools.",
+  "name": "@turbotools/taro",
+  "version": "0.0.1-alpha",
+  "description": "A library of common tools and hooks for react/taro.",
   "main": "./lib/index.js",
   "module": "./es/index.js",
   "typings": "./lib/index.d.ts",
@@ -9,13 +9,12 @@
   "files": [
     "lib",
     "es",
-    "typings.d.ts",
     "README.md",
     "package.json"
   ],
   "scripts": {
     "clean": "rimraf ./dist && rimraf ./lib && rimraf ./es",
-    "build:bundle": "ts-node ./index.ts",
+    "build:bundle": "ts-node ./build.ts",
     "build:types": "tsc -p ./tsconfig.json",
     "build": "pnpm clean && pnpm build:bundle && pnpm build:types",
     "publish:utils": "npm publish --registry https://registry.npmjs.org"
@@ -26,7 +25,13 @@
     "turbo-utils",
     "common",
     "hooks",
-    "tools"
+    "tools",
+    "react",
+    "react-hooks",
+    "turbotools",
+    "taro",
+    "taro-hooks",
+    "taro-tools"
   ],
   "author": "dshuais",
   "license": "MIT",
@@ -34,8 +39,5 @@
     "type": "git",
     "url": "git+https://github.com/dshuais/turbo-utils.git"
   },
-  "homepage": "https://dshuais.netlify.app/",
-  "dependencies": {
-    "dayjs": "^1.11.13"
-  }
+  "homepage": "https://dshuais.netlify.app/"
 }
