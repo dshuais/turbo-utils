@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-// import EventEmitter from '../../../packages/trubo-utils/lib/EventEmitter'
+// import { formatDate, dayjs } from '../../../packages/turbo-utils'
 
-import {EventEmitter} from 'turboutils'
+// import { EventEmitter } from 'turboutils'
+// import { dayjs, formatDate } from 'turboutils';
 
 import EventEmitterTest from './components/EventEmitter'
 
@@ -15,16 +16,20 @@ function App() {
 
   function onAdd() {
     setCount((count) => count + 1);
-    EventEmitter.emit('test', count + 1);
-    EventEmitter.emit('test2', count + 1);
-    console.log('has test event listener', EventEmitter.has('test'));
-    if(count + 1 === 10) {
-      EventEmitter.removeAllListeners();
-    }
+    // EventEmitter.emit('test', count + 1);
+    // EventEmitter.emit('test2', count + 1);
+    // console.log('has test event listener', EventEmitter.has('test'));
+    // if(count + 1 === 10) {
+    //   EventEmitter.removeAllListeners();
+    // }
   }
 
   useEffect(() => {
-    console.log('EventEmitter:>> ', EventEmitter);
+    // console.log('EventEmitter:>> ', EventEmitter);
+
+    // const day: dayjs.Dayjs = dayjs();
+    // console.log('formatDate:>> ', formatDate(1735551221117, 'MM/dd EE'));
+    // console.log('dayjs:>> ', day.isAfter('2022-12-31'), day.format('YYYY-MM-DD HH:mm:ss'), ' --  ', day.add(2, 'day').format('YYYY-MM-DD HH:mm:ss'));
     
   }, []);
 
