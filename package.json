@@ -6,15 +6,26 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:utils": "pnpm -r --filter=./packages/turbo-utils build",
-    "publish:utils": "pnpm -r --filter=./packages/turbo-utils publish:utils"
+    "publish:utils": "pnpm -r --filter=./packages/turbo-utils publish:utils",
+    "build:tools:taro": "cd ./packages/turbo-tools/taro && pnpm build",
+    "publish:tools:taro": "cd ./packages/turbo-tools/taro && pnpm publish:taro",
+    "build:tools:react": "cd ./packages/turbo-tools/react && pnpm build",
+    "publish:tools:react": "cd ./packages/turbo-tools/react && pnpm publish:react",
+    "build:all": "pnpm build:utils && pnpm build:tools:taro && pnpm build:tools:react",
+    "publish:all": "pnpm publish:utils && pnpm publish:tools:taro && pnpm publish:tools:react"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@tarojs/taro": "3.6.34",
+    "@types/lodash-es": "^4.17.12",
     "@types/node": "^22.10.2",
+    "@types/react": "18.0.0",
     "@typescript-eslint/eslint-plugin": "7.4.0",
     "@typescript-eslint/parser": "7.4.0",
+    "ahooks": "^3.8.4",
+    "dayjs": "^1.11.13",
     "esbuild": "^0.24.2",
     "esbuild-plugin-glob": "^2.2.3",
     "eslint": "8.57.0",
@@ -22,12 +33,16 @@
     "eslint-plugin-react": "7.35.0",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-react-refresh": "0.4.6",
+    "lodash-es": "^4.17.21",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "zustand": "^5.0.2"
   },
   "dependencies": {
-    "turboutils": "0.0.2-alpha"
+    "turboutils": "0.0.9-alpha"
   }
 }

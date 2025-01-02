@@ -26,11 +26,21 @@ async function bundle(format: FORMAT) {
     bundle: true,
     target: 'es2015',
     charset: 'utf8',
-    external: ['turboutils'],
+    external: [
+      'turboutils',
+      '@tarojs',
+      'react',
+      'react-dom',
+      'react-router-dom',
+      'ahooks',
+      'dayjs',
+      'zustand'
+    ],
     outdir,
     entryPoints: ['./src/**/*.ts'],
     outbase: './src',
     minify: true,
+    treeShaking: true,
     plugins: [globPlugin()]
   };
 

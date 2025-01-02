@@ -1,24 +1,25 @@
 {
   "name": "@turbotools/react",
-  "version": "0.0.1-alpha",
+  "version": "0.0.2-alpha",
   "description": "A library of common tools and hooks for react.",
   "main": "./lib/index.js",
   "module": "./es/index.js",
   "typings": "./lib/index.d.ts",
   "sideEffects": false,
   "files": [
-    "dist",
     "lib",
     "es",
+    "typings.d.ts",
     "README.md",
     "package.json"
   ],
   "scripts": {
+    "update:utils": "pnpm add turboutils@latest",
     "clean": "rimraf ./dist && rimraf ./lib && rimraf ./es",
     "build:bundle": "ts-node ./build.ts",
     "build:types": "tsc -p ./tsconfig.json",
-    "build": "pnpm clean && pnpm build:bundle && pnpm build:types",
-    "publish:utils": "npm publish --registry https://registry.npmjs.org"
+    "build": "pnpm clean && pnpm update:utils && pnpm build:bundle && pnpm build:types",
+    "publish:react": "npm publish --registry https://registry.npmjs.org"
   },
   "keywords": [
     "utils",
@@ -37,5 +38,18 @@
     "type": "git",
     "url": "git+https://github.com/dshuais/turbo-utils.git"
   },
-  "homepage": "https://dshuais.netlify.app/"
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "homepage": "https://dshuais.netlify.app/",
+  "bugs": {
+    "url": "https://github.com/dshuais/turbo-utils/issues"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "turboutils": "0.0.9-alpha"
+  }
 }

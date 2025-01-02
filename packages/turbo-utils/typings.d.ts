@@ -6,6 +6,6 @@
  * @description: ts类型文件
  */
 
-type Rules = { valid?: boolean; key: string; msg: string; };
+export type Rules = { valid?: boolean; key: string; msg: string; };
 
-type Empty<K, T> = Partial<{ [key: K]: T; }>;
+export type Empty<K extends string | number | symbol = string, T = any> = Partial<Record<K, T>>;

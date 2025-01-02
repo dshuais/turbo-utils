@@ -1,6 +1,6 @@
 {
   "name": "turboutils",
-  "version": "0.0.6-alpha",
+  "version": "0.0.10-alpha",
   "description": "A library of common tools.",
   "main": "./lib/index.js",
   "module": "./es/index.js",
@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "clean": "rimraf ./dist && rimraf ./lib && rimraf ./es",
-    "build:bundle": "ts-node ./index.ts",
+    "build:bundle": "ts-node ./build.ts",
     "build:types": "tsc -p ./tsconfig.json",
     "build": "pnpm clean && pnpm build:bundle && pnpm build:types",
     "publish:utils": "npm publish --registry https://registry.npmjs.org"
