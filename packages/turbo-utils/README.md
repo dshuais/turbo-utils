@@ -1,11 +1,30 @@
-# turbo-utils
+# turboutils
 
-`turbo-utils` 是一个基于 `typescript` 的工具库，提供了一些常用的工具函数和hooks等。
+`turboutils` 是一个完全基于 `typescript` 的工具库，提供了一些常用的工具函数等。
 
-## Install
+## ✨ Features
+
+- Easy to learn and use.
+- Contains common hooks and encapsulates common apis.
+- Written in TypeScript with predictable static types.
+- High performance.
+
+## 📦 Install
 
 ```bash
-
-pnpm add turboutils
-
+$ npm install --save turboutils
+# or
+$ pnpm add turboutils `推荐`
+# or
+$ yarn add turboutils
 ```
+
+## 🔨 Usage
+
+```ts
+import { EventEmitter, formatDate, padQuery, pick ... } from 'turboutils';
+```
+
+## 🚀 API
+
+...
