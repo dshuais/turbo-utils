@@ -1,4 +1,4 @@
-import { isEmpty } from './isEmpty';
+import { isEmpty } from '../';
 
 /**
  * This is just a simple version of deep copy
@@ -145,7 +145,7 @@ export function filtrationEmpty(obj: QueryParams) {
  * @param params query parameters
  * @returns string
  */
-export function padQuery(url: string, params = {}) {
+export function padQuery(url: string, params: QueryParams = {}) {
   if(isEmpty(url)) return '';
   url = decodeURIComponent(url);
 
@@ -217,4 +217,39 @@ export function randomString(len: number = 32) {
   let n = '';
   for(let i = 0; i < len; i++) n += t.charAt(Math.floor(Math.random() * a));
   return n;
+}
+
+type Many<T> = T | readonly T[];
+
+/**
+ * Creates an object composed of the picked `object` properties.
+ * @param object The source object.
+ * @param paths The property names to pick, specified individually or in arrays.
+ * @returns Returns the new object.
+ * @example
+ * var object = { 'a': 1, 'b': 2, 'c': 3 };
+ * pick(object, ['a', 'c']) => { 'a': 1, 'c': 3 }
+ */
+export function pick<T extends object, U extends keyof T>(
+  object: T,
+  ...props: Many<U>[]
+): Pick<T, U> {
+  type Result = { [K in U]?: T[K] };
+
+  const result: Result = {},
+    propsArray = props.reduce((acc, val) => {
+      if(Array.isArray(val)) {
+        return acc.concat(val);
+      }
+      return acc.concat([val]);
+    }, [] as Many<U>[]);
+
+  for(const prop of propsArray) {
+    const key = prop as U;
+    if(key in object) {
+      result[key] = object[key];
+    }
+  }
+
+  return result as Pick<T, U>;
 }

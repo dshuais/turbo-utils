@@ -91,4 +91,42 @@ export function getDateParams(date?: string | number | Date) {
   return dateParams;
 }
 
+type TimeUnit = { label: string; value: number };
+
+/**
+ * Get the difference between the current time and the specified time
+ * @param dateTimeStamp string | number | Date
+ * @returns string
+ */
+export function getDateDiff(dateTimeStamp: string | number | Date): string {
+  const timestamp = dayjs(dateTimeStamp).valueOf(),
+    now = dayjs().valueOf(),
+    diffValue = now - timestamp;
+
+  if(diffValue < 0) return '未来的时间';
+
+  const units: TimeUnit[] = [
+    { label: '年', value: 365 * 24 * 60 * 60 * 1000 },
+    { label: '月', value: 30 * 24 * 60 * 60 * 1000 },
+    { label: '周', value: 7 * 24 * 60 * 60 * 1000 },
+    { label: '天', value: 24 * 60 * 60 * 1000 },
+    { label: '小时', value: 60 * 60 * 1000 },
+    { label: '分钟', value: 60 * 1000 },
+    { label: '刚刚', value: 10 * 1000 }
+  ];
+
+  if(diffValue < units[units.length - 1].value) return '刚刚';
+
+  for(const { label, value } of units.slice(0, -1)) {
+    const unitDiff = diffValue / value;
+    if(unitDiff >= 1) {
+      if(label === '天' && unitDiff < 2) {
+        return unitDiff === 1 ? '昨天' : '今天';
+      }
+      return `${Math.floor(unitDiff)} ${label}前`;
+    }
+  }
+  return '刚刚';
+}
+
 export default dayjs;

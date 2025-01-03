@@ -7,6 +7,10 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "moduleResolution": "Node",
+    "jsx": "react",
+    "paths": {
+      "@/*": ["src/*"],
+    },
     "lib": ["esnext", "dom"]
   }
 }

@@ -1,4 +1,5 @@
 import { isString } from './is';
+import { Rules } from '../../typings';
 
 export const regs = {
   url: "^(http|https|ftp)://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?/?([a-zA-Z0-9-._?,'/\\+&amp;%$#=~])*[^.,)(s]$",

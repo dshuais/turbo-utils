@@ -1,1 +1,1 @@
-require('../utils/build');
+require('../../utils/build');
