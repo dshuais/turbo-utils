@@ -1,4 +1,4 @@
-import { isObject } from './is';
+import { isObject } from '../validations/is';
 
 /**
  * 拼接classname，用法与 classnames 库一致， 更推荐使用 classnames 库
@@ -17,7 +17,7 @@ import { isObject } from './is';
  *
  * @param  {...any} args
  */
-export function classNames(...args: any[]) {
+function classNames(...args: any[]) {
   const classnames = args.filter(name => !!name);
   return classnames
     .map(name => {
@@ -34,3 +34,5 @@ export function classNames(...args: any[]) {
     })
     .join(' ');
 }
+
+export default classNames;

@@ -34,7 +34,8 @@ async function bundle(format: FORMAT) {
       'react-router-dom',
       'ahooks',
       'dayjs',
-      'zustand'
+      'zustand',
+      'js-cookie'
     ],
     outdir,
     entryPoints: ['./src/**/*.ts'],

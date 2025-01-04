@@ -7,7 +7,7 @@
  * @param value The value to inspect.
  * @return Returns true if value is empty, else false.
  */
-export function isEmpty(value: any): boolean {
+function isEmpty(value: any): value is null {
   if(value === null || value === undefined) return true;
 
   if(typeof value === 'string' && value.trim() === '') return true;
@@ -26,3 +26,5 @@ export function isEmpty(value: any): boolean {
 
   return false;
 }
+
+export default isEmpty;

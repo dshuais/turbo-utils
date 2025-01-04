@@ -1,4 +1,4 @@
-import { isEmpty } from '../';
+import { isEmpty, isString } from '..';
 
 /**
  * This is just a simple version of deep copy
@@ -137,6 +137,37 @@ export function filtrationEmpty(obj: QueryParams) {
     }
   });
   return obj;
+}
+
+/**
+ * Filter query parameters
+ * @param params query parameters
+ * @param filters filter fields
+ * @returns
+ */
+export function filterParams<T extends QueryParams | string>(params: T, filters: string[] = []): T {
+  const isstring = isString(params);
+  if(isEmpty(params)) return isstring ? '' as T : ({} as T);
+  const queryParams: QueryParams = isstring ? params2json(params) : params;
+
+  filters.forEach(key => {
+    delete queryParams[key];
+  });
+
+  return isstring ? json2params(queryParams) as T : queryParams as T;
+}
+
+/**
+ * Filter query parameters
+ * @param url Must be a url
+ * @param filters filter fields
+ * @returns string
+ */
+export function filterQuery(url: string, filters: string[] = []) {
+  if(isEmpty(url)) return '';
+  const [pathname, search = ''] = url.split('?');
+
+  return padQuery(pathname, params2json(filterParams(search, filters)));
 }
 
 /**
