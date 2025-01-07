@@ -1,2 +1,4 @@
 import useSelector from './hooks/useSelector';
-export { useSelector };
+import useTimeMeter from './hooks/useTimeMeter';
+import useSwipeDetection from './hooks/useSwipeDetection';
+export { useSelector, useTimeMeter, useSwipeDetection };

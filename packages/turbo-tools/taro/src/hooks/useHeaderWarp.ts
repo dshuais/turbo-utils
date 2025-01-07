@@ -25,7 +25,7 @@ type Props = {
  * 头部组件hooks
  * @param props
  */
-export default function useHeaderWarp(props?: Props) {
+function useHeaderWarp(props?: Props) {
 
   const { color = '#fff', activedColor = '#000', background = 'transparent', activedBackground = '#fff', top = 20 } = props || {};
 
@@ -58,3 +58,5 @@ export default function useHeaderWarp(props?: Props) {
   };
 
 }
+
+export default useHeaderWarp;

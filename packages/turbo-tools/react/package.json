@@ -1,6 +1,6 @@
 {
   "name": "@turbotools/react",
-  "version": "0.0.2-alpha",
+  "version": "1.0.0",
   "description": "A library of common tools and hooks for react.",
   "main": "./lib/index.js",
   "module": "./es/index.js",

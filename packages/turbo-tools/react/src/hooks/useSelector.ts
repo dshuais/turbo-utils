@@ -16,13 +16,13 @@ type Pick<T, K extends keyof T> = {
 type Many<T> = T | readonly T[];
 
 /**
- * 优化useSelector
+ * 优化useSelector，此hook为 zustand 状态管理工具最佳实践，仅为 zustand 使用
  * @description 从store中获取state，且只获取需要的state，避免不必要的渲染
  * 因为如果错误的在组件内使用同一个store的时候 用法上会对渲染造成影响
  * @plan1 useStore(state => state) 就算没有使用store的state，只要store更新，组件就会重新渲染
  * @plan2 useStore(state => state.a)) 单次只导出一个方法或state   官方方法1 这样组件就不会重新渲染了
  * @plan3 useStore(useShallow(state => ({ a: state.a })))        官方方法2 这样组件就不会重新渲染了
- * @use useStore(useSelector(['a', 'b']))
+ * @example const { a, b } = useStore(useSelector(['a', 'b']))
  * @param fields 需要获取的state字段列表，不填默认全部
  * @returns 返回需要的state
  */
