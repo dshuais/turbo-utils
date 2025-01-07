@@ -88,6 +88,18 @@ importers:
         specifier: ^5.0.2
         version: 5.0.2(@types/react@18.0.0)(react@18.0.0)
 
+  packages/turbo-tools/react:
+    dependencies:
+      turboutils:
+        specifier: 1.0.0
+        version: 1.0.0
+
+  packages/turbo-tools/taro:
+    dependencies:
+      turboutils:
+        specifier: 1.0.0
+        version: 1.0.0
+
   packages/turbo-utils:
     dependencies:
       dayjs:
@@ -2493,6 +2505,9 @@ packages:
 
   turboutils@0.0.9-alpha:
     resolution: {integrity: sha512-2wvP26ppOI9ZMUUjVphkRD3NXfJMibGkQX3EjiMfIBoeZRo3ZkDd9r1PyLn/hjQjYSRG/k7maKaw8UyBkShvJQ==}
+
+  turboutils@1.0.0:
+    resolution: {integrity: sha512-OWBcQ7Oaw9AzzmxaLehRSGbdzAKrtuA/Kk3VDGlB7w5wXLxcK0jvfA4zlXZCYG3NhkRPx8Wq1TQpXdhHdPawwQ==}
 
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -5295,6 +5310,11 @@ snapshots:
   turboutils@0.0.9-alpha:
     dependencies:
       dayjs: 1.11.13
+
+  turboutils@1.0.0:
+    dependencies:
+      dayjs: 1.11.13
+      js-cookie: 3.0.5
 
   type-check@0.4.0:
     dependencies:

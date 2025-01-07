@@ -12,7 +12,9 @@
     "build:tools:react": "cd ./packages/turbo-tools/react && pnpm build",
     "publish:tools:react": "cd ./packages/turbo-tools/react && pnpm publish:react",
     "build:all": "pnpm build:utils && pnpm build:tools:taro && pnpm build:tools:react",
-    "publish:all": "pnpm publish:utils && pnpm publish:tools:taro && pnpm publish:tools:react"
+    "publish:all": "pnpm publish:utils && pnpm publish:tools:taro && pnpm publish:tools:react",
+    "build:tools": "pnpm build:tools:taro && pnpm build:tools:react",
+    "publish:tools": "pnpm publish:tools:taro && pnpm publish:tools:react"
   },
   "keywords": [],
   "author": "",

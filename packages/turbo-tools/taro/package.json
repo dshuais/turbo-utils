@@ -47,7 +47,7 @@
   },
   "homepage": "https://dshuais.netlify.app/",
   "dependencies": {
-    "turboutils": "0.0.7-alpha"
+    "turboutils": "1.0.0"
   },
   "bugs": {
     "url": "https://github.com/dshuais/turbo-utils/issues"

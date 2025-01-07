@@ -50,6 +50,6 @@
     "lib": "lib"
   },
   "dependencies": {
-    "turboutils": "0.0.9-alpha"
+    "turboutils": "1.0.0"
   }
 }
