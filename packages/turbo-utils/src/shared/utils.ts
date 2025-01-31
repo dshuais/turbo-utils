@@ -64,15 +64,15 @@ export function ObjectAssign<T extends object>(obj1: T, obj2: Partial<T> | any):
   return obj1;
 }
 
-type QueryParams = { [key: string]: string | string[] };
+export type QueryParams = { [key: string]: string | string[] };
 /**
  * Convert query parameters to json
  * @param search query string
  * @param slice query separator
  * @returns object
  */
-export function params2json(search: string, slice = '&'): QueryParams {
-  if(isEmpty(search)) return {};
+export function params2json<T extends QueryParams = QueryParams>(search: string, slice = '&'): T {
+  if(isEmpty(search)) return {} as T;
   const queryParams = decodeURIComponent(search).replace(/^\?/, '').split(slice);
 
   const params = queryParams.reduce((acc, param) => {
@@ -90,7 +90,7 @@ export function params2json(search: string, slice = '&'): QueryParams {
     return acc;
   }, {} as QueryParams);
 
-  return params;
+  return params as T;
 }
 
 /**
@@ -99,7 +99,7 @@ export function params2json(search: string, slice = '&'): QueryParams {
  * @param slice query separator
  * @returns string
  */
-export function json2params(params: QueryParams, slice = '&') {
+export function json2params<T extends QueryParams = QueryParams>(params: T, slice = '&') {
   if(isEmpty(params)) return '';
   return Object.keys(params)
     .map(key => {
@@ -130,7 +130,7 @@ export function getUrlParam(param: string, search?: string) {
  * @param obj object
  * @returns object
  */
-export function filtrationEmpty(obj: QueryParams) {
+export function filtrationEmpty<T extends QueryParams = QueryParams>(obj: T) {
   Object.keys(obj).forEach(key => {
     if(isEmpty(obj[key]) || obj[key] === 'undefined') {
       delete obj[key];
@@ -176,12 +176,12 @@ export function filterQuery(url: string, filters: string[] = []) {
  * @param params query parameters
  * @returns string
  */
-export function padQuery(url: string, params: QueryParams = {}) {
+export function padQuery<T extends QueryParams = QueryParams>(url: string, params?: T) {
   if(isEmpty(url)) return '';
   url = decodeURIComponent(url);
 
   const [pathname, search] = url.split('?'),
-    query = filtrationEmpty(Object.assign({}, params2json(search), filtrationEmpty(Object.assign({}, params))));
+    query = filtrationEmpty(Object.assign({}, params2json(search), filtrationEmpty(Object.assign({}, params || {}))));
 
   return `${pathname}?${json2params(query)}`;
 }
