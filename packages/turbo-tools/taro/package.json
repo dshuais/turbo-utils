@@ -1,6 +1,6 @@
 {
   "name": "@turbotools/taro",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A library of common tools and hooks for react/taro.",
   "main": "./lib/index.js",
   "module": "./es/index.js",
@@ -47,7 +47,7 @@
   },
   "homepage": "https://dshuais.netlify.app/",
   "dependencies": {
-    "turboutils": "1.0.0"
+    "turboutils": "1.0.1"
   },
   "bugs": {
     "url": "https://github.com/dshuais/turbo-utils/issues"

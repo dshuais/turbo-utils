@@ -1,4 +1,5 @@
 import { isEmpty, isString } from '..';
+const { isClient } = require('../../../utils/utils');
 
 /**
  * This is just a simple version of deep copy
@@ -64,7 +65,7 @@ export function ObjectAssign<T extends object>(obj1: T, obj2: Partial<T> | any):
   return obj1;
 }
 
-export type QueryParams = { [key: string]: string | string[] };
+export type QueryParams = { [key: string]: any };
 /**
  * Convert query parameters to json
  * @param search query string
@@ -119,8 +120,9 @@ export function json2params<T extends QueryParams = QueryParams>(params: T, slic
  * @returns
  */
 export function getUrlParam(param: string, search?: string) {
+  const Window = isClient ? window : { location: { search: '' }};
   const reg = new RegExp('(^|&)' + param + '=([^&]*)(&|$)'),
-    r = (search || window.location.search).substr(1).match(reg);
+    r = (search || Window.location.search).substr(1).match(reg);
   if(r != null) return unescape(r[2]);
   return null;
 }
@@ -145,7 +147,7 @@ export function filtrationEmpty<T extends QueryParams = QueryParams>(obj: T) {
  * @param filters filter fields
  * @returns
  */
-export function filterParams<T extends QueryParams | string>(params: T, filters: string[] = []): T {
+export function filterParams<T extends QueryParams | string>(params: T, filters: (T extends QueryParams ? keyof T : string)[] = []): T {
   const isstring = isString(params);
   if(isEmpty(params)) return isstring ? '' as T : ({} as T);
   const queryParams: QueryParams = isstring ? params2json(params) : params;

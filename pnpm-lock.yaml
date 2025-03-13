@@ -91,14 +91,14 @@ importers:
   packages/turbo-tools/react:
     dependencies:
       turboutils:
-        specifier: 1.0.0
-        version: 1.0.0
+        specifier: 1.0.1
+        version: 1.0.1
 
   packages/turbo-tools/taro:
     dependencies:
       turboutils:
-        specifier: 1.0.0
-        version: 1.0.0
+        specifier: 1.0.1
+        version: 1.0.1
 
   packages/turbo-utils:
     dependencies:
@@ -2506,8 +2506,8 @@ packages:
   turboutils@0.0.9-alpha:
     resolution: {integrity: sha512-2wvP26ppOI9ZMUUjVphkRD3NXfJMibGkQX3EjiMfIBoeZRo3ZkDd9r1PyLn/hjQjYSRG/k7maKaw8UyBkShvJQ==}
 
-  turboutils@1.0.0:
-    resolution: {integrity: sha512-OWBcQ7Oaw9AzzmxaLehRSGbdzAKrtuA/Kk3VDGlB7w5wXLxcK0jvfA4zlXZCYG3NhkRPx8Wq1TQpXdhHdPawwQ==}
+  turboutils@1.0.1:
+    resolution: {integrity: sha512-kj2sb5YYTsK04Q9qRb9gSNN5+X788mIvIz64G4xX1Rh1/ab2VlPqq0Q10GfN+Cv9aplLnuBW7AUvV9KeJOJpjw==}
 
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -5311,7 +5311,7 @@ snapshots:
     dependencies:
       dayjs: 1.11.13
 
-  turboutils@1.0.0:
+  turboutils@1.0.1:
     dependencies:
       dayjs: 1.11.13
       js-cookie: 3.0.5

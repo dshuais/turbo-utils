@@ -2,17 +2,20 @@
  * @Author: dushuai
  * @Date: 2025-01-05 11:48:21
  * @LastEditors: dushuai
- * @LastEditTime: 2025-01-07 15:08:21
+ * @LastEditTime: 2025-03-13 09:43:30
  * @description: 一个用于检测滑动手势的自定义hook
  */
 import { useSetState } from 'ahooks';
 import { useEffect } from 'react';
+const { isClient } = require('../../../../utils/utils');
 
 type Props = {
   /** Y轴触发滚动距离 */
   thresholdY?: number;
   /** X轴触发滚动距离 */
   thresholdX?: number;
+  screenWidth?: number;
+  screenHeight?: number;
   /** 滑动结束回调 */
   onEnd?: (direction: DIRECTION) => void;
 }
@@ -22,8 +25,8 @@ type STATE = {
   status: STATUS;
 }
 
-const screenWidth = window.innerWidth,
-  screenHeight = window.innerHeight,
+const screenWidth = isClient ? window?.innerWidth : 0,
+  screenHeight = isClient ? window?.innerHeight : 0,
   baseWidth = 375,
   baseHeight = 667;
 
@@ -51,8 +54,8 @@ function useSwipeDetection(props: Props) {
   });
 
   // thresholdX和thresholdY依据375*667计算 根据实际屏幕大小 把thresholdX和thresholdY转换成相对于屏幕的值
-  const x = thresholdX ? (thresholdX / baseWidth) * screenWidth : 0,
-    y = thresholdY ? (thresholdY / baseHeight) * screenHeight : 0;
+  const x = thresholdX ? (thresholdX / baseWidth) * (screenWidth || props.screenWidth || 0) : 0,
+    y = thresholdY ? (thresholdY / baseHeight) * (screenHeight || props.screenHeight || 0) : 0;
 
   const { direction, status } = state;
 
